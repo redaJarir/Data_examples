@@ -96,20 +96,26 @@ def main():
     context = connect_to_libreoffice()
     desktop = context.ServiceManager.createInstanceWithContext("com.sun.star.frame.Desktop", context)
 
-    file_path = "file:///inputs/Excel_Automation/test_AXA.xlsx"
+    file_path = "file:///0_inputs/Data_examples/test_AXA.xlsx"
     doc = open_document(desktop, file_path)
 
     sheet_name = "AXA 1"
     sheet = get_sheet(doc, sheet_name)
 
-    set_cell_value(sheet, "B10", 79844)
-    cell_value = get_cell_value(sheet, "C10")
-    print(cell_value)
+    set_cell_value(sheet, "B10", 5)
+    set_cell_value(sheet, "B11", 12)
+    set_cell_value(sheet, "B12", 9)
+    cell_value1 = get_cell_value(sheet, "C10")
+    cell_value2 = get_cell_value(sheet, "C11")
+    cell_value3 = get_cell_value(sheet, "C12")
+    print(cell_value1)
+    print(cell_value2)
+    print(cell_value3)
 
     doc.calculateAll()
 
     close_document(doc)
     terminate_libreoffice(libreoffice_process)
 
-if _name_ == "_main_":
+if __name__== "__main__":
     main()
